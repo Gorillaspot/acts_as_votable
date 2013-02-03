@@ -154,6 +154,8 @@ module ActsAsVotable
         )
       end
 
+      Rails.logger.info "[votable][updates] #{updates}"
+
       self.update_attributes(updates, :without_protection => true) if updates.size > 0
 
     end
