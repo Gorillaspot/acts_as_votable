@@ -84,7 +84,8 @@ module ActsAsVotable
         :voter_type => options[:voter].class.name
       })
 
-      if _votes_.count == 0 || (_votes_.count > 0 and (Date.today.to_datetime - _votes_.last.created_at.to_datetime).to_i >= 1)
+      #if _votes_.count == 0 || (_votes_.count > 0 and (Date.today.to_datetime - _votes_.last.created_at.to_datetime).to_i >= 1)
+      if _votes_.count == 0 || (_votes_.count > 0 and (DateTime.now - _votes_.last.created_at.to_datetime).to_i >= 1)
         # this voter has not voted in the last 24 hours
         vote = ActsAsVotable::Vote.new(
           :votable => self,
